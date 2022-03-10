@@ -2,23 +2,25 @@ from ast import Break
 import RPi.GPIO as GPIO
 import time
 
-# dit zijn de pins (fysieke board pins)
+#Mocht je trouwens willen dat dit ook door andere mensen gebruikt kan worden zet ik de Engelse vertaling erbij.
+
+# Dit zijn de pins (fysieke board pins)/These are the physical board pins
 ledin = 18
 ledout = 31
 
-# stroomsterkte zelfde als in jouw formule
+# Stroomsterkte/Current
 I = 1.5
-# Tijd
+# Tijd/Time
 T = float()
 # Volume
 V = float()
-# Ik heb geen flauw idee wat dit is
+# Constante van Faraday/Constant of Faraday
 F = pow(9.64853365, 4)
 
-# geeft variabele die de user zijn keuze bepaald
+# Geeft variabele die de user zijn keuze bepaald/Gives the variable that determines the user's choice
 vort = ""
 
-# voor het aanzetten van de tijd op de raspberry pi
+# Voor het aanzetten van de tijd op de raspberry pi/For turning on the time on the raspberry pi
 formula_v = None
 T = None
 
@@ -39,7 +41,7 @@ def ToF():
     if vort == "Volume":
         V = input("Hoeveel gas wil je dat de machine maakt (in kubieke decimeter))\n")
         v = float(V)
-        formula_t = v/24.5*F/I
+        formula_t = v/24.5*F/I #De v/24.5 moet echt tussen haakjes anders werkt het niet meer. Je zou eventueel ook eerst v/24.5 uitrekenen en dat antwoord vervolgens toepassen in de formule.
         print("Dit duurt dan "+ str(round(formula_t, 2)) +" seconden\n")
         yn = input("typ 'Y' als je wilt beginnen, typ 'N' als je wilt afbreken")
 
